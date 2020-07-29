@@ -15,7 +15,7 @@ class Options:
         # ===============================================================
         #                     General options
         # ===============================================================
-        self.parser.add_argument('--data_dir', type=str, default='/home/wei/Downloads/h3.6m/dataset/', help='path to H36M dataset')
+        self.parser.add_argument('--data_dir', type=str, default='D:/Google Drive/academic/Projects/DARPA SemaFor/py_code/LearnTrajDep/h3.6m/dataset/', help='path to H36M dataset')
         self.parser.add_argument('--data_dir_3dpw', type=str, default='/home/wei/Downloads/3DPW/sequenceFiles/', help='path to 3DPW dataset')
         self.parser.add_argument('--data_dir_cmu', type=str, default='/home/wei/Downloads/cmu_mocap/', help='path to CMU dataset')
         self.parser.add_argument('--exp', type=str, default='test', help='ID of experiment')
@@ -35,9 +35,15 @@ class Options:
         self.parser.add_argument('--lr', type=float, default=5.0e-4)
         self.parser.add_argument('--lr_decay', type=int, default=2, help='every lr_decay epoch do lr decay')
         self.parser.add_argument('--lr_gamma', type=float, default=0.96)
+
+        # self.parser.add_argument('--input_n', type=int, default=10, help='observed seq length')
+        # self.parser.add_argument('--output_n', type=int, default=25, help='future seq length')
+        # self.parser.add_argument('--dct_n', type=int, default=35, help='number of DCT coeff. preserved for 3D')
+
         self.parser.add_argument('--input_n', type=int, default=10, help='observed seq length')
-        self.parser.add_argument('--output_n', type=int, default=25, help='future seq length')
-        self.parser.add_argument('--dct_n', type=int, default=35, help='number of DCT coeff. preserved for 3D')
+        self.parser.add_argument('--output_n', type=int, default=10, help='future seq length')
+        self.parser.add_argument('--dct_n', type=int, default=20, help='number of DCT coeff. preserved for 3D')
+
         self.parser.add_argument('--actions', type=str, default='all', help='path to save checkpoint')
         self.parser.add_argument('--epochs', type=int, default=50)
         self.parser.add_argument('--dropout', type=float, default=0.5,

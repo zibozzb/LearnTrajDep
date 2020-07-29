@@ -73,7 +73,7 @@ def main(opt):
     val_dataset = H36motion(path_to_data=opt.data_dir, actions='all', input_n=input_n, output_n=output_n,
                             split=2, sample_rate=sample_rate, data_mean=data_mean, data_std=data_std, dct_n=dct_n)
 
-    # load dadasets for training
+    # load datasets for training
     train_loader = DataLoader(
         dataset=train_dataset,
         batch_size=opt.train_batch,
@@ -111,6 +111,8 @@ def main(opt):
         ret_log = np.array([epoch + 1])
         head = np.array(['epoch'])
         # per epoch
+        a = train_dataset.dim_used
+'''
         lr_now, t_l, t_e, t_3d = train(train_loader, model, optimizer, input_n=input_n,
                                        lr_now=lr_now, max_norm=opt.max_norm, is_cuda=is_cuda,
                                        dim_used=train_dataset.dim_used, dct_n=dct_n)
@@ -161,7 +163,7 @@ def main(opt):
                         ckpt_path=opt.ckpt,
                         is_best=is_best,
                         file_name=file_name)
-
+'''
 
 def train(train_loader, model, optimizer, input_n=20, dct_n=20, lr_now=None, max_norm=True, is_cuda=False, dim_used=[]):
     t_l = utils.AccumLoss()
@@ -216,7 +218,7 @@ def train(train_loader, model, optimizer, input_n=20, dct_n=20, lr_now=None, max
     bar.finish()
     return lr_now, t_l.avg, t_e.avg, t_3d.avg
 
-
+'''
 def test(train_loader, model, input_n=20, output_n=50, dct_n=20, is_cuda=False, dim_used=[]):
     N = 0
     # t_l = 0
@@ -293,7 +295,7 @@ def test(train_loader, model, input_n=20, output_n=50, dct_n=20, is_cuda=False, 
         bar.next()
     bar.finish()
     return t_e / N, t_3d / N
-
+'''
 
 def val(train_loader, model, input_n=20, dct_n=20, is_cuda=False, dim_used=[]):
     # t_l = utils.AccumLoss()
